@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">    
+    <link rel="stylesheet" href="./styles.css" />
+    
+</head>
+<body>
+    <main id="content">
+        <section class="section" id="section1">
+            <aside id="sidebar" style="min-width: 140px; height: 100vh; display: flex; flex-direction: column; align-content: center; vertical-align: middle;">
+                <div id="company-logo-box" style="height: 9%; display: flex; flex-direction: column;">
+                    <p id="company-logo" style="font-family: courier; font-size: 24px; align-content: center; margin: auto; vertical-align: middle; text-align: center;">Qtt's</p>
+                </div>
+                <!-- <img id="company-logo" src="../Assets/company-logo-2.svg" alt="Construction Company"></img> -->
+                <div id="nav-buttons">
+                    <li id="nav-projects-btn"><span class="material-icons-round">apartment</span>Projects</li>
+                    <li id="nav-users-btn"><span class="material-icons-round">account_circle</span>Users</li>
+                    <!-- <li><a href="#"><span class="material-icons-round">account_circle</span>Section 1</a></li>
+                    <li><a href="#section2"></a><span class="material-icons-round">account_circle</span>Section 2<a></li> -->
+                </div>
+            </aside>
+            <!-- ---------------   PROJECTS PAGE   -------------------------->
+
+            <div class="page" id="projects-page" style="display:block">
+
+                <!-- dialog New --------------------------------------------------------->
+
+                <dialog id="new-project-modal">
+                    <form id="new-project-form">
+                        <h2>New Project</h2>
+                        <div class="input-list">
+                            <div class="form-field-container">
+                                <input data-project-info="id" name="id" type="hidden" cols="1" rows="1" placeholder="auto-id">
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    apartment
+                                    </span>Name</label>
+                                <input data-project-info="name" name="name" type="string" cols="1" rows="1" placeholder="Enter your project name">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    notes
+                                    </span>Description</label>
+                                <textarea data-project-info="description" name="description" cols="30" rows="5" placeholder="Give your description here"></textarea>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    euro
+                                    </span>Cost</label>
+                                <input data-project-info="cost" name="cost" type="string" placeholder="Give the project cost here">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    clock
+                                    </span>Progress</label>
+                                <input data-project-info="progress" name="progress" type="string" placeholder="Give the progression %">
+                            </div>
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    account_circle
+                                    </span>Role</label>
+                                <select data-project-info="userRole" name="userRole">
+                                    <option>Architect</option>
+                                    <option>Engineer</option>
+                                    <option>Developer</option>
+                                </select>
+
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    not_listed_location
+                                    </span>Status</label>
+                                <select data-project-info="status" name="status">
+                                    <option>Pending</option>
+                                    <option>Active</option>
+                                    <option>Finished</option>
+                                </select>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    calendar_month
+                                    </span>Finish Date</label>
+                                <input data-project-info="finishDate" name="finishDate" type="date">
+                            </div>
+                        </div>
+
+                        <div class="submit-buttons">
+                            <button id="new-project-form-cancel-btn" type="cancel">Cancel</button>
+                            <button id="new-project-form-submit-btn" type="submit" style="background-color: green">Accept</button>
+                        </div>
+                    </form>
+                </dialog>
+
+                <!-- dialog Edit --------------------------------------------------------->
+
+                <dialog id="edit-project-modal">
+                    <form id="edit-project-form">
+                        <h2>Edit Project</h2>
+                        <div class="input-list">
+                            <div class="form-field-container">
+                                <input data-project-info="id" name="id" type="hidden" cols="1" rows="1" placeholder="auto-id">
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    apartment
+                                    </span>Name</label>
+                                <input data-project-info="name" name="name" type="string" cols="1" rows="1" placeholder="Enter your project name">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    notes
+                                    </span>Description</label>
+                                <textarea data-project-info="description" name="description" cols="30" rows="5" placeholder="Give your description here"></textarea>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    euro
+                                    </span>Cost</label>
+                                <input data-project-info="cost" name="cost" type="string" placeholder="Give the project cost here">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    time
+                                    </span>Progress</label>
+                                <input data-project-info="progress" name="progress" type="string" placeholder="Give the project progress here">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    account_circle
+                                    </span>Role</label>
+                                <select data-project-info="userRole" name="userRole">
+                                    <option>Architect</option>
+                                    <option>Engineer</option>
+                                    <option>Developer</option>
+                                </select>
+
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    not_listed_location
+                                    </span>Status</label>
+                                <select data-project-info="status" name="status">
+                                    <option>Pending</option>
+                                    <option>Active</option>
+                                    <option>Finished</option>
+                                </select>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    calendar_month
+                                    </span>Finish Date</label>
+                                <input data-project-info="finishDate" name="finishDate" type="date">
+                            </div>
+                        </div>
+
+                        <div class="submit-buttons">
+                            <button id="edit-project-form-cancel-btn" type="cancel">Cancel</button>
+                            <button id="edit-project-form-submit-btn" type="submit" style="background-color: green">Accept</button>
+                        </div>
+                    </form>
+                </dialog>
+
+                <!-- header --------------------------------------------------------->
+
+                <header class="page-header" id="projects-page-header" style="height: 9%;">
+                    <h2>Projects</h2>
+                    <div class="page-header-buttons">    
+                        <button  id="export-projects-btn"><span class="material-icons-round action-icon">
+                        file_download
+                        </span></button>
+                        <button id="import-projects-btn"><span class="material-icons-round action-icon">
+                            file_upload
+                            </span></button>
+                            <button id="new-project-btn"><span class="material-icons-round">
+                        add_circle_outline
+                        </span>New Project</button>
+                    </div>
+                </header>
+
+                <!-- project list --------------------------------------------------------->
+                
+                <div id="projects-list" style="padding: 15px 20px; align-items:center; justify-items: center; overflow-y: auto; max-height: 95vh;">
+                </div>
+            </div>
+
+    <!-- ---------------   PROJECT DETAILS PAGE ------------------------->
+
+            <div class="page" id="project-details" style="display:none">
+
+                <!-- dialog --------------------------------------------------------->
+
+                <dialog id="new-todo-modal">
+                    <form id="new-todo-form">
+                        <h2>New To-Do</h2>
+                        <div class="input-list">
+                            <div class="form-field-container">
+                                <input data-todo-info="id" name="id" type="hidden" cols="1" rows="1">
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    apartment
+                                    </span>Name</label>
+                                <input data-todo-info="name" name="name" type="string" cols="1" rows="1" placeholder="Enter your project name">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    notes
+                                    </span>Description</label>
+                                <textarea data-todo-info="description" name="description" cols="30" rows="5" placeholder="Give your description here"></textarea>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    account_circle
+                                    </span>Status</label>
+                                <select data-todo-info="status" name="status">
+                                    <option>pending</option>
+                                    <option>on going</option>
+                                    <option>solved</option>
+                                </select>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    calendar_month
+                                    </span>Finish Date</label>
+                                <input data-todo-info="deadline" name="deadline" type="date">
+                            </div>
+                        </div>
+
+                        <div class="submit-buttons">
+                            <button id="new-todo-form-cancel-btn" type="submit">Cancel</button>
+                            <button id="new-todo-form-submit-btn" type="submit" style="background-color: green">Accept</button>
+                            <button id="new-todo-form-delete-btn" type="button" style="background-color: red">Delete</button>
+
+                        </div>
+                    </form>
+                </dialog>
+
+                <!-- dialog --------------------------------------------------------->
+
+                <dialog id="edit-todo-modal">
+                    <form id="edit-todo-form">
+                        <h2>Edit To-Do</h2>
+                        <div class="input-list">
+                            <div class="form-field-container">
+                                <input data-todo-info="id" name="id" type="hidden" cols="1" rows="1">
+                            </div>
+                            <div hidden class="form-field-container">
+                                <input data-todo-info="relatedProject" name="relatedProject" type="hidden" cols="1" rows="1">
+                            </div>  
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    apartment
+                                    </span>Name</label>
+                                <input data-todo-info="name" name="name" type="string" cols="1" rows="1" placeholder="Enter your project name">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    notes
+                                    </span>Description</label>
+                                <textarea id="edit-todo-form-description" data-todo-info="description" name="description" cols="30" rows="5" placeholder="Give your description here">""</textarea>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    account_circle
+                                    </span>Status</label>
+                                <select data-todo-info="status" name="status">
+                                    <option>pending</option>
+                                    <option>on going</option>
+                                    <option>solved</option>
+                                </select>
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">
+                                    calendar_month
+                                    </span>deadline</label>
+                                <input data-todo-info="deadline" name="deadline" type="date">
+                            </div>
+                        </div>
+
+                        <div class="submit-buttons">
+                            <button id="edit-todo-form-cancel-btn" type="submit">Cancel</button>
+                            <button id="edit-todo-form-submit-btn" type="submit" style="background-color: green">Accept</button>
+                            <button id="edit-todo-form-delete-btn" type="button" style="background-color: red">Delete</button>
+
+                        </div>
+                    </form>
+                </dialog>
+                <!-- header --------------------------------------------------------->
+
+                <header class="page-header" id="project-details-page-header" style="height: 9%">
+                    <div id="page-title">
+                        <h2 data-project-info="name">Hospital Center</h2>
+                        <h5 data-project-info="description" style="color:#969696">Community hospital located at downtown</h5>
+                    </div>
+                    <div style="display: none" class="page-header-buttons">
+                        <button hidden><span class="material-icons-round">
+                        file_download
+                        </span>Download</button>
+                        <button hidden id="new-project-btn"><span class="material-icons-round">
+                        add_circle_outline
+                        </span>New Project</button>
+    
+                    </div>
+
+                </header>
+
+                <!-- project details --------------------------------------------------------->
+                
+                <div class="main-page-content">
+                    <div id="project-details-container" style="display:flex; flex-direction:column; row-gap:10px">
+
+                        <!-- dashboard card 1 ProjectDetails----------------------->
+
+                        <div class="dashboard-card" id="project-information">
+                            <div style="display: flex; justify-content: space-between; align-content: center; height: 30px;">
+                                <p data-project-info="initials" style="font-size: 12px; background-color: #969696; width: 30px; height: 30px; border-radius: 15px; padding: 7px;">HC</p>
+                                <p data-project-info="id" style="font-size: 8px; width: 200px; height: 30px; display: none">Id</p>
+                                <div>
+                                    <button id="edit-project-btn" type="button" class="btn-secondary" style="height: 30px;"><p style="width: 40px; font-size: small">Edit</p></button>
+                                    <button id="delete-project-btn" class="btn-secondary" style="height: 30px;"><p style="width: 40px; font-size: small">Delete</p></button>
+                                </div>
+
+                            </div>
+                            <div style="padding: 30 0px;">
+                                <div style="left:0">
+                                    <h5 data-project-info="name2">Hospital Center</h5>
+                                    <p data-project-info="description2" style="font-size:small; font-weight: lighter;">Community hospital located at downtown</p>
+                                </div>
+                                <div style="display: flex; column-gap: 30px; justify-content:space-between; padding: 10px 0; font-size: smaller">
+                                    <div>
+                                        <h5 style="color: #969696;">Status</h5>
+                                        <h5 data-project-info="status">Active</h5>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: #969696;">Cost</h5>
+                                        <h5 data-project-info="cost" style="color:white;">€2.400.000</h5>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: #969696;">Role</h5>
+                                        <h5 data-project-info="userRole" style="color:white;">Engineer</h5>
+                                    </div>
+                                    <div hidden>
+                                        <h5 style="color: #969696;">Finish Date</h5>
+                                        <h5 data-project-info="finishDate" style="color:white;">2025-05-01</h5>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: #969696;">Finish Date</h5>
+                                        <h5 data-project-info="shortFinishDate" style="color:white;">2025-05-01</h5>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div>
+                                <div class="progress-bar">
+                                    <div id="project-progress-bar" class="progress-bar-done" style="background-color: rgb(158, 195, 158); border-radius: 10px 0 0 10px;">
+                                            <h5 data-project-info="progress">80%</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- dashboard card 2 - ToDos ------------------------->
+
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-header">
+                                <h4>To-do</h4>
+                                <div class="dashboard-card-buttons">
+                                    <span class="material-icons-round">search</span>
+                                    <input class="search-box" type="text" placeholder="Search by name">
+                                    <button id="new-todo-btn"><span class="material-icons-round">
+                                        add_circle_outline
+                                        </span></button>
+                
+                                </div>
+                            </div>
+                            <div class="todo-list" id="todo-list">
+
+                                <!-- todo card -->
+
+                                <div id="id1" class="todo-card">
+                                    <span class="material-icons-round" style="width:30px; height:30px; display:flex; justify-content:center; align-items:center">check_circle_outline</span>
+                                    <div class="todo-description"><p>Pending to finish the todo list dashboard, giving format and check buttons.</p></h5></div>
+                                    <div class="todo-deadline">25-2-2024</div>
+                                </div>
+
+                                <!-- todo card -->
+
+                                <div id="id2" class="todo-card">
+                                    <span class="material-icons-round" style="width:30px; height:30px; display:flex; justify-content:center; align-items:center">check_circle_outline</span>
+                                    <div class="todo-description"><p>DM Juan attaching my solution!</p></h5></div>
+                                    <div class="todo-deadline">25-2-2024</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div id="viewer container" class="dashboard-card"></div>
+                </div>
+            </div>
+
+    <!-- ---------------   USERS LIST  ------------------------------>
+
+            <div class="page" id="users-page" style="display:none"> 
+                <!-- dialog --------------------------------------------------------->
+                <dialog id="new-user-modal">
+                    <form id="new-user-form">
+                        <h2>New User</h2>
+                        <div class="input-list">
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">contact_page</span>Name</label>
+                                <input type="name" placeholder="Enter your name">
+                            </div>
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">psychology</span>Role</label>
+                                <input type="text" placeholder="Enter your role">
+                            </div>
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">store</span>Company</label>
+                                <input type="text" placeholder="Enter your company name">
+                            </div>
+
+                            <div class="form-field-container">
+                                <label><span class="material-icons-round">add_a_photo</span>Photo</label>
+                                <div 
+                                    id="drop_zone" 
+                                    ondrop="dropHandler(event);"
+                                    ondragover="dragOverHandler(event);">
+                                    <p>Drag your photo <i>here</i>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit-buttons">
+                            <button>Cancel</button>
+                            <button style="background-color: green">Accept</button>
+                        </div>
+                    </form>
+                </dialog>
+                <!-- page header ---------------------------------------------------->
+                <header id="users-page-header" style="height: 9%" class="page-header">
+                        <h2>Users</h2>
+                        <div style="display:flex; flex-direction:row; column-gap:10px">
+                            <button><span class="material-icons-round">file_download</span></button>
+                            <button><span class="material-icons-round">person_add</span></span>New User</button>
+                        </div>
+                </header>
+                <!-- users list ----------------------------------------------------->
+                <div id="users-list" class="users-list">
+                    <header class="users-list-header">
+                        <div id="user-card-content" class="user-card-content">
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round"></span>
+                                    <p style="color: #969696;"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="user-card-content" class="user-card-content">
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">contact_page</span>
+                                    <p style="color: #969696;">Name</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        psychology
+                                        </span>
+                                    <p style="color: #969696;">Role</p>
+                                </div>
+                            </div>    
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        store</span> 
+                                    <p style="color: #969696;">Company</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">phone_iphone</span>
+                                    <p style="color: #969696;">Phone</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">email</span>
+                                    <p style="color: #969696;">mail</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div><p>...</p></div>
+                    </header>
+                    <!-- ---------------------------------------------------------------------------- -->
+                    <div id="user-card" class="user-card">
+                        <div class="user-card-image">
+                            <img src="./Assets/alex03bn 2.jpg" alt="face" style="border-radius: 20px; height:34px;">
+                        </div>
+                        <div id="user-card-content" class="user-card-content">
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">contact_page</span>
+                                    <p style="color: #969696;">Alex Inglés Ausejo</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        psychology
+                                        </span>
+                                    <p style="color: #969696;">BIM Software Developer</p>
+                                </div>
+                            </div>    
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        store</span> 
+                                    <p style="color: #969696;">alexingles.es</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">phone_iphone</span>
+                                    <p style="color: #969696;">616020370</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">email</span>
+                                    <p style="color: #969696;">alex_ingles@icloud.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button style="display:flex; flex-direction:row; column-gap:5px;"><span class="material-icons-round" style="font-size: var(--font-base);">edit</span>Edit</button>
+                    </div>
+                    <!-- ----------------------------------------------------------------------------------- -->
+                    <div id="user-card" class="user-card">
+                        <div class="user-card-image">
+                            <img src="./Assets/luke 2.jpeg" alt="face" style="border-radius: 20px; height:34px;">
+                        </div>
+                        <div id="user-card-content" class="user-card-content">
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">contact_page</span>
+                                    <p style="color: #969696;">Luke Skywalker</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        psychology
+                                        </span>
+                                    <p style="color: #969696;">Jedi Padawan</p>
+                                </div>
+                            </div>    
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">store</span> 
+                                    <p style="color: #969696;">Light Side, Ltd</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">phone_iphone</span>
+                                    <p style="color: #969696;">telekinetic</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">email</span>
+                                    <p style="color: #969696;">luke-skywalker@tatooine.org</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button style="display:flex; flex-direction:row; column-gap:5px;"><span class="material-icons-round" style="font-size: var(--font-base);">edit</span>Edit</button>
+                    </div>
+                    <!-- --------------------------------------------------------------------- -->
+                    <div id="user-card" class="user-card">
+                        <div class="user-card-image">
+                            <img src="./Assets/dustin 2.jpeg" alt="face" style="border-radius: 20px; height:34px;">
+                        </div>
+                        <div id="user-card-content" class="user-card-content">
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">contact_page</span>
+                                    <p style="color: #969696;">Dustin</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">
+                                        psychology
+                                        </span>
+                                    <p style="color: #969696;">Demogorgon whisperer</p>
+                                </div>
+                            </div>    
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">store</span> 
+                                    <p style="color: #969696;">Hellfire Club</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">phone_iphone</span>
+                                    <p style="color: #969696;">555555555</p>
+                                </div>
+                            </div>
+                            <div class="user-card-property">
+                                <div class="user-property-group">
+                                    <span class="material-icons-round">email</span>
+                                    <p style="color: #969696;">dustin@hellfireclub.org</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button style="display:flex; flex-direction:row; column-gap:5px;"><span class="material-icons-round" style="font-size: var(--font-base);">edit</span>Edit</button>
+                    </div>
+                    <!-- --------------------------------------------------------------------- -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./src/index.ts"></script>
+</body>
+</html>
